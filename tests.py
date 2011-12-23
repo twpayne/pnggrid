@@ -13,6 +13,9 @@ class TestPNGGridDemo(unittest.TestCase):
     def setUp(self):
         self.pnggrid = PNGGrid.from_utfgrid_file(open('demo.json'))
 
+    def test_data(self):
+        self.assertEqual(self.pnggrid.get_data(), None)
+
     def test_grid(self):
         for i in xrange(0, 65502):
             self.assertEqual(self.pnggrid[i & 0xff, i >> 8], i)
@@ -26,6 +29,9 @@ class TestPNGGridEurope(unittest.TestCase):
     def setUp(self):
         self.utfgrid = UTFGrid.from_file(open('europe.json'))
         self.pnggrid = PNGGrid.from_utfgrid_file(open('europe.json'))
+
+    def test_data(self):
+        self.assertEqual(self.pnggrid.get_data(), self.utfgrid.data)
 
     def test_grid(self):
         for y in xrange(0, 64):
