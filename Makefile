@@ -26,3 +26,7 @@ europe.json.gz: europe.json
 
 europe.png: europe.json
 	python utfgrid2pnggrid.py $<
+
+.PHONY: clean
+clean:
+	rm -f demo.json.gz demo.png europe.json.gz europe.png
